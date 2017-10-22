@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Tambah Keluarga</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/mystyle.css" />
+<style>
+</style>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<div class="container-form">
+			<h4>
+				<center>Tambah Keluarga</center>
+			</h4>
+			<form action="/keluarga/tambah/submit" th:object="${keluarga}" method="post">
+				<div class="form-group">
+					<label for="alamat">Alamat</label><br></br> <input
+						class="form-control form-control-sm" type="text" name="alamat" th:field="*{alamat}"/>
+				</div>
+				<div class="form-group">
+					<label for="rt">RT</label><br></br> <input
+						class="form-control form-control-sm" type="text" name="rt" th:field="*{rt}" />
+				</div>
+				<div class="form-group">
+					<label for="rw">RW</label><br></br> <input
+						class="form-control form-control-sm" type="text" name="rw" th:field="*{rw}" />
+				</div>
+				<div class="form-group">
+					<label for="nama_kelurahan">Kelurahan/Desa</label><br></br> <input
+						class="form-control form-control-sm" type="text" name="nama_kelurahan" th:field="*{nama_kelurahan}"/>
+				</div>
+				<div class="form-group">
+					<label for="nama_kecamatan">Kecamatan</label><br></br> <input
+						class="form-control form-control-sm" type="text" name="nama_kecamatan" th:field="*{nama_kecamatan}"/>
+				</div>
+				<div class="form-group">
+					<label for="nama_kota">Kota</label><br></br> <input
+						class="form-control form-control-sm" type="text" name="nama_kota" th:value="${nama_kota}"/>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary" type="submit" name="action"
+						value="save" style="">Tambah Keluarga</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div th:replace="fragments/fragment :: footer"></div>
+</body>
+</html>

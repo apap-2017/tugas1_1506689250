@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Cari Penduduk</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/mystyle.css" />
+<link rel="stylesheet" type="text/css"
+	href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css"></link>
+<style>
+</style>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<div class="container-form">
+			<h4>
+				<center>Cari Penduduk</center>
+			</h4>
+			<form action="/penduduk/cari" method="get">
+				<div class="form-group">
+					<label for="kota">Kota</label><br></br> <select
+						class="form-control form-control-sm" id="kota" name="kota"
+						readonly="true">
+						<option th:value="${kota.id}" th:text="${kota.nama_kota}"
+							selected="selected"></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="kecamatan">Kecamatan</label><br></br> <select
+						class="form-control form-control-sm" id="kecamatan"
+						name="kecamatan" readonly="true">
+						<option th:value="${kecamatan.id}"
+							th:text="${kecamatan.nama_kecamatan}" selected="selected"></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="kelurahan">Kelurahan</label><br></br> <select
+						class="form-control form-control-sm" id="kelurahan"
+						name="kelurahan" readonly="true">
+						<option th:value="${kelurahan.id}"
+							th:text="${kelurahan.nama_kelurahan}" selected="selected"></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary" type="submit">Lihat</button>
+				</div>
+			</form>
+		</div>
+		<div>
+			<table id="table_id" class="display">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>NIK</th>
+						<th>Nama</th>
+						<th>Jenis Kelamin</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="penduduk,iterationStatus: ${penduduks}">
+						<td><p th:text="${iterationStatus.count}">No</p></td>
+						<td><p th:text="${penduduk.nik}">NIK</p></td>
+						<td><p th:text="${penduduk.nama}">Nama</p></td>
+						<td><p
+								th:text="${penduduk.jenis_kelamin == 1}? 'Wanita' : 'Pria'">Jenis
+								Kelamin</p></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div th:replace="fragments/fragment :: footer"></div>
+		<script src="static/js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" charset="utf8"
+			src="//code.jquery.com/jquery-1.12.4.js"></script>
+		<script type="text/javascript" charset="utf8"
+			src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#table_id').DataTable();
+			});
+		</script>
+		</div>
+</body>
+</html>

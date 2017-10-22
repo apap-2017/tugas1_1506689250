@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Cari Penduduk</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/mystyle.css" />
+<style>
+</style>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<div class="container-form">
+			<h4>
+				<center>Cari Penduduk</center>
+			</h4>
+			<form action="/penduduk/cari" method="get">
+				<div class="form-group">
+					<label for="kota">Kota</label><br></br>  <select 
+						class="form-control form-control-sm" id="selectKota" th:name="'kota'">
+						<option th:value="${kota.id}" th:each="kota : ${listKota}" 
+							th:text="${kota.nama_kota}"></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary" type="submit" >Lihat</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div th:replace="fragments/fragment :: footer"></div>
+</body>
+</html>

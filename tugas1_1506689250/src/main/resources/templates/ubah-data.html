@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Cari Data</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/mystyle.css" />
+<style>
+hr {
+	display: block;
+	height: 3px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+</style>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<br></br>
+		<div id="lihat-penduduk">
+			<h5>Ubah Data Penduduk Berdasarkan NIK</h5>
+			<form action="/penduduk/ubah/" method="post">
+				<div class="form-group">
+					<small>Masukkan Nomor Induk Kependudukan</small>
+					<input class="form-control" type="text" name="nik" />
+				</div>
+				<div>
+					<button class="btn btn-primary" type="submit">Ubah</button>
+				</div>
+			</form>
+		</div>
+		<div id="lihat-keluarga">
+			<h5>Ubah Data Keluarga Berdasarkan NKK</h5>
+			<form action="/keluarga/ubah" method="post">
+				<div class="form-group">
+					<small>Masukkan Nomor Kartu Keluarga</small>
+					<input class="form-control" id="nkk" type="text" name="nkk" />
+				</div>
+				<div>
+					<button class="btn btn-primary" type="submit">Ubah</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div th:replace="fragments/fragment :: footer"></div>
+</body>
+</html>

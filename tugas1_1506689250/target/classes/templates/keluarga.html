@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Penduduk</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+<body>
+	<main>
+	<div th:replace="fragments/fragment :: header"></div>
+	<br></br>
+	<div class="container">
+		<h3 th:text="'Lihat Data Keluarga - ' + ${keluarga.nomor_kk}" style="font-weight: bold;"><center></center></h3>
+		<div>
+			<table class="table table-hover">
+				<tbody>
+					<tr>
+						<td>NKK</td>
+						<td th:text="${keluarga.nomor_kk}"></td>
+					</tr>
+					<tr>
+						<td>Alamat</td>
+						<td th:text="${keluarga.alamat}"></td>
+					</tr>
+					<tr>
+						<td>RT/RW</td>
+						<td th:text="${keluarga.rt} + '/' + ${keluarga.rw}"></td>
+					</tr>
+					<tr>
+						<td>Kelurahan/Desa</td>
+						<td th:text="${keluarga.nama_kelurahan}"></td>
+					</tr>
+					<tr>
+						<td>Kecamatan</td>
+						<td th:text="${keluarga.nama_kecamatan}"></td>
+					</tr>
+					<tr>
+						<td>Kota</td>
+						<td th:text="${keluarga.nama_kota}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Nama Lengkap</th>
+						<th>Jenis Kelamin</th>
+						<th>Tempat Lahir</th>
+						<th>Tanggal Lahir</th>
+						<th>Agama</th>
+						<th>Pekerjaan</th>
+						<th>Status Perkawinan</th>
+						<th>Status Dalam Keluarga</th>
+						<th>Kewarganegaraan</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="penduduk,iterStat: ${keluarga.penduduk}">
+					<tr>
+						<td><p th:text="${iterStat.count}">No</p></td>
+						<td><p th:text="${penduduk.nama}">Nama</p></td>
+						<td><p th:text="${penduduk.jenis_kelamin==1}? 'Wanita' : 'Pria'">Jenis Kelamin</p></td>
+						<td><p th:text="${penduduk.tempat_lahir}">Tempat Lahir</p></td>
+						<td><p th:text="${penduduk.tanggal_lahir}">Tanggal Lahir</p></td>
+						<td><p th:text="${penduduk.agama}">Agama</p></td>
+						<td><p th:text="${penduduk.pekerjaan}">Pekerjaan</p></td>
+						<td><p th:text="${penduduk.status_perkawinan}">Status Perkawinan</p></td>
+						<td><p th:text="${penduduk.status_dalam_keluarga}">Status Dalam Keluarga</p></td>
+						<td><p
+								th:text="${penduduk.is_wni==1}? 'WNI' : 'WNA'">Kewarganegaraan</p></td>
+					</tr>
+					</th:block>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br></br>
+	<div th:replace="fragments/fragment :: footer"></div>
+	</main>
+</body>
+</html>
